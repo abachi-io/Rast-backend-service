@@ -1,6 +1,8 @@
 # Rast
 
-Rast is a hosted Ledgerium node that lets users to run applications without setting up their own node. We provide access to a selection of standard JSON-RPC API, with the addition of custom methods to make development easier.
+Rast is a centralized service operated by The Block Ledger that allows DApps to process queries and request information from the Ledgerium blockchain without requiring the developer to run a full node themselves.
+
+
 
 ## Getting started
 
