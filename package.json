@@ -22,6 +22,7 @@
     "mongoose": "^5.7.12",
     "nodemailer": "^6.3.1",
     "qrcode": "^1.4.4",
+    "socket.io": "^2.3.0",
     "speakeasy": "^2.0.0",
     "validator": "^12.1.0",
     "web3": "^1.2.4",
