@@ -8,12 +8,61 @@ Rast is a centralized service operated by The Block Ledger that allows DApps to 
 
 After sign up, you will create your API keys to use within your app when making requests to Rast.
 
-##### Example Request
+
+### Web3 Provider
+
+Example API key `bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e`
+
+###### HTTP Connection
+
+```
+const Web3 = require('web3')
+web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:2906/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
+
+web3.eth.getBlock('latest')
+  .then(console.log)
+  .catch(console.log)
+```
+
+
+###### Socket Connection
+
+```
+const Web3 = require('web3')
+web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:2906/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
+
+const subscription = web3.eth.subscribe('newBlockHeaders', function(error, result){
+    if (!error) {
+        console.log(result);
+
+        return;
+    }
+
+    console.error(error);
+})
+.on("data", function(blockHeader){
+    console.log(blockHeader);
+})
+.on("error", console.error);
+
+// unsubscribes the subscription
+subscription.unsubscribe(function(error, success){
+    if (success) {
+        console.log('Successfully unsubscribed!');
+    }
+});
+
+```
+
+
+### API Request
+
+###### Request
 ```javascript
   const axios = require('axios')
 
   const apiKey = 'yourApiKey'
-  const block = 200
+  const block = '200'
 
   axios.get(`https://toorak.ledgerium.io/rast/api/xlg/getBlock/${block}`, {
     headers: {
@@ -25,7 +74,7 @@ After sign up, you will create your API keys to use within your app when making 
 
 ```
 
-##### Example Response
+###### Response
 ```javascript
 {
   success: true,
@@ -67,7 +116,7 @@ After sign up, you will create your API keys to use within your app when making 
 # Private
 ### Setting up
 
-`git clone `
+`git clone`
 
 `cd rast`
 
@@ -83,13 +132,15 @@ After sign up, you will create your API keys to use within your app when making 
   MONGO_HOST=127.0.0.1
   MONGO_DB=userManagement
   BCRYPT_SALT_ROUNDS=14
-  JWT_SECRET={?Fd]o#G&Wcqa)An<C@dlJT}&LG1VX
+  JWT_SECRET={?Fd]o#G&Mcqa)An<C@dlJT}&LG1VX
   WEBSITE_NAME=Rast
   WEBSITE_DOMAIN=https://toorak.ledgerium.io/rast
-  SMTP_HOST=
-  SMTP_PORT=
+  SMTP_HOST=smtp.gmail.com
+  SMTP_PORT=465
   SMTP_USER=
+  SMTP_FROM=
   SMTP_PASSWORD=
   WEB3_HTTP=http://toorak01.ledgerium.io:8545
-  WEB3_WS=http://toorak01.ledgerium.io:9000
+  WEB3_WS=ws://toorak01.ledgerium.io:9000
+  TICKER=XLG
 ```
