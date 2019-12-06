@@ -15,7 +15,7 @@ Example API key `bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32
 
 ###### HTTP Connection
 
-```
+```javascript
 const Web3 = require('web3')
 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:2906/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
 
@@ -27,7 +27,7 @@ web3.eth.getBlock('latest')
 
 ###### Socket Connection
 
-```
+```javascript
 const Web3 = require('web3')
 web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:2906/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
 
