@@ -16,36 +16,36 @@ Example API key `bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32
 ###### HTTP Connection
 
 ```javascript
-const Web3 = require('web3')
-web3 = new Web3(new Web3.providers.HttpProvider("http://rast.ledgerium.io/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
+  const Web3 = require('web3')
+  const web3 = new Web3(new Web3.providers.HttpProvider("http://rast.ledgerium.io/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
 
-web3.eth.getBlock('latest')
-  .then(console.log)
-  .catch(console.log)
+  web3.eth.getBlock('latest')
+    .then(console.log)
+    .catch(console.log)
 ```
 
 
 ###### Socket Connection
 
 ```javascript
-const Web3 = require('web3')
-web3 = new Web3(new Web3.providers.WebsocketProvider("ws://rast.ledgerium.io/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
+  const Web3 = require('web3')
+  const web3 = new Web3(new Web3.providers.WebsocketProvider("ws://rast.ledgerium.io/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
 
-const subscription = web3.eth.subscribe('newBlockHeaders', function(error, result){
-    if (!error) return console.log(result);
-    console.error(error);
-})
-.on("data", function(blockHeader){
-    console.log(blockHeader);
-})
-.on("error", console.error);
+  const subscription = web3.eth.subscribe('newBlockHeaders', function(error, result){
+      if (!error) return console.log(result);
+      console.error(error);
+  })
+  .on("data", function(blockHeader){
+      console.log(blockHeader);
+  })
+  .on("error", console.error);
 
-// unsubscribes the subscription
-subscription.unsubscribe(function(error, success){
-    if (success) {
-        console.log('Successfully unsubscribed!');
-    }
-});
+  // unsubscribes the subscription
+  subscription.unsubscribe(function(error, success){
+      if (success) {
+          console.log('Successfully unsubscribed!');
+      }
+  });
 
 ```
 
