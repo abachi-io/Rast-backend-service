@@ -17,7 +17,7 @@ Example API key `bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32
 
 ```javascript
 const Web3 = require('web3')
-web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:2906/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
+web3 = new Web3(new Web3.providers.HttpProvider("http://rast.ledgerium.io/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
 
 web3.eth.getBlock('latest')
   .then(console.log)
@@ -29,15 +29,10 @@ web3.eth.getBlock('latest')
 
 ```javascript
 const Web3 = require('web3')
-web3 = new Web3(new Web3.providers.WebsocketProvider("ws://localhost:2906/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
+web3 = new Web3(new Web3.providers.WebsocketProvider("ws://rast.ledgerium.io/bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e"));
 
 const subscription = web3.eth.subscribe('newBlockHeaders', function(error, result){
-    if (!error) {
-        console.log(result);
-
-        return;
-    }
-
+    if (!error) return console.log(result);
     console.error(error);
 })
 .on("data", function(blockHeader){
@@ -61,10 +56,10 @@ subscription.unsubscribe(function(error, success){
 ```javascript
   const axios = require('axios')
 
-  const apiKey = 'yourApiKey'
+  const apiKey = 'bb1590a268f3a09841ae9903bdb4dddd3cf5e74afb1728c21ca8b46cf8c7b32e'
   const block = '200'
 
-  axios.get(`https://toorak.ledgerium.io/rast/api/xlg/getBlock/${block}`, {
+  axios.get(`https://rast.ledgerium.io/api/xlg/getBlock/${block}`, {
     headers: {
       apiKey: apiKey
     }
@@ -109,9 +104,6 @@ subscription.unsubscribe(function(error, success){
   }
 }
 ```
-
-
-
 
 # Private
 ### Setting up
